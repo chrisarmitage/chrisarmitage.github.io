@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  digital-garden-container:
+    image: digital-garden-jekyll:latest
+    container_name: digital_garden_jekyll
+    restart: always
+    tty: true
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    command: bundle exec jekyll serve --host 0.0.0.0 --livereload
