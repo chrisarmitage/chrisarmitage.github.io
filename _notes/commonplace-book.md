@@ -61,3 +61,15 @@ A place to make quick notes, of facts, quotes, or ideas.
 
 > There are two ways to write error-free programs; only the third one works.  
 > -- Alan Perlis
+
+> Don't forget to do an anarchy today.
+
+> Are you thirty? Have a sip!  
+> Are you hungry? Have a spack!  
+> Have you been snitting in the sale proclation?  
+> Mack your tabbers!  
+> Are you stick? Purt your indies!  
+> Do you need a prot to buntle? Go! Now!  
+> Are you tired? Break your togs!  
+> Do a quick snat of your vitals. Are you fond? Do you need to reduct your plandles? If you have a trick, tog it. If you need to sitch, go so.  
+> Are you grod or too trinking? If you need to break off a grint or mend the bontle, go to that now!  
