@@ -1,6 +1,7 @@
 site_name: Digital Garden
 site_url: https://chrisarmitage.github.io/
 repo_url: https://github.com/chrisarmitage/chrisarmitage.github.io
+site_dir: site
 theme:
   name: material
   features:
