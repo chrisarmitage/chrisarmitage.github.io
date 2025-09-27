@@ -23,6 +23,4 @@ markdown_extensions:
   - md_in_html
 nav:
   - Home: index.md
-  - Maps:
-      - Dev Environments: maps/dev-environments.md
-      - Observability: maps/observability.md
+  
