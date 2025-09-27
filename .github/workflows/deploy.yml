@@ -12,24 +12,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Build site
-        run: mkdocs build --strict
-      - name: Deploy to main
+      - name: Build and Deploy
         run: |
-          git fetch
+          # Build the site
+          mkdocs build --strict
+          
+          # Store current commit message for the deployment commit
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          
+          # Switch to main and update it
           git checkout main
           git rm -rf .
           git clean -fxd
+          
+          # Copy the built site
           cp -r site/* .
           rm -rf site
+          
+          # Commit and push
           git add .
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git commit -m "Deploy site from source branch" || exit 0
+          git commit -m "Deploy: ${COMMIT_MESSAGE}" || exit 0
           git push origin main
