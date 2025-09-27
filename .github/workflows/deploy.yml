@@ -22,9 +22,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build and Deploy
         run: |
-          # Build the site
-          mkdocs build --strict
-          
           # Store current commit message for the deployment commit
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           
@@ -32,6 +29,9 @@ jobs:
           git checkout main
           git rm -rf .
           git clean -fxd
+
+          # Build the site
+          mkdocs build --strict
           
           # Commit and push
           git add .
