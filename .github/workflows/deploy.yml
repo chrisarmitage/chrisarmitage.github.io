@@ -22,25 +22,27 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build and Deploy
         run: |
-          # Build the site from the checked-out source branch
+          # Build the site
           mkdocs build --strict
           
-          # Store current commit message for the deployment commit
+          # Save built site outside of git working directory
+          mv site /tmp/site
+          
+          # Store current commit message
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           
-          # Create main branch if it doesn't exist
+          # Setup and clean main branch
           if ! git show-ref --verify --quiet refs/remotes/origin/main; then
             git checkout --orphan main
-            git rm -rf .
           else
             git checkout main
-            git rm -rf .
-            git clean -fxd
           fi
+          git rm -rf .
+          git clean -fxd
           
-          # Copy the built site
-          cp -r site/* .
-          rm -rf site
+          # Move built site back into place
+          mv /tmp/site/* .
+          rm -rf /tmp/site
           
           # Commit and push
           git add .
